@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex6_FileAPI</title>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>HTML5 File API</h1>
+        </header>
+        <section id="enc">
+            <input type="file" id="s_file" />
+            <!-- multiple 속성을 부여하면 여러 개의 파일을 선택 가능함 -->
+
+            <select id="ss">
+                <option>UTF-8</option>
+                <option>8859_1</option>
+            </select>
+            <button type="button" id="read_dtn" onclick="readFile()">읽기</button>
+
+            <div>
+                <span id="fileName">file name</span>
+                <span id="fileSize">file size</span>
+            </div>
+
+            <textarea readonly id="content"></textarea>
+        </section>
+    </div>
+
+    <script>
+        function readFile(){
+            // 사용자가 선택한 파일(s_file)을 가져온다.
+            // 파일에서 가져오는 것은 (하나만 있더라도) 모두 배열로 가져오므로 files[0]
+            let file = document.getElementById("s_file").files[0];
+
+            document.getElementById("fileName").innerText = file.name;
+            document.getElementById("fileSize").innerText = "("+Math.round(file.size/1024)+"KB)";
+
+            let reader = new FileReader();
+
+            // reader로부터 자원읽기를 수행하고 그것이 끝날 때(이벤트)
+            // 특정 함수를 수행하도록 지정하자
+            reader.onload = function(){
+                // 현재문서에서 아이디가 content인 요소를 검색하자
+                let ta = document.getElementById("content");
+
+                // reader로부터 읽기한 결과를 ta에 innerHTML로 지정하자
+                ta.innerHTML = reader.result;
+
+            };
+
+            // reader에서 오류가 발생했을 때를 감지하는 이벤트
+            reader.onerror = function(err){
+                console.log(err.target.error.code);
+            }
+            
+            // ss에 선택된 index값을 가지고 원하는  option의 값을 얻자
+            // select요소에는 여러 개의 option들이 배열로 관리되므로
+            // 배열을 접근하는 index값이 필요하다.
+
+            // 그렇게 해야만 배열에 있는 선택된 값을 얻을 수 있다.
+            
+            let ss = document.getElementById("ss");
+
+            let encoding = ss.value;
+            // let encoding = ss.options[ss.selectedIndex].value;
+            
+            //reader에게 읽어야 할 파일을 지정하고 읽기시작
+            reader.readAsText(file, encoding);
+
+
+
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
