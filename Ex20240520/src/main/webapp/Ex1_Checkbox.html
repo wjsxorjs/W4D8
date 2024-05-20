@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ex1_Checkbox</title>
 <style>
 	table{
 		border-collapse: collapse;
@@ -149,35 +149,15 @@
             });
 
 
-			$("tbody").bind("change",function(){
-                
-				indivCol();
-            });
 
 		});
-
-		function indivCol(){
-			let check = true;
-			let idx = 2;
-
-			let tr_ar = $("tbody").children();
-
-			for(let i=0; i< tr_ar.length; i++){
-				let td_ar = $(tr_ar[i]).children();
-				console.log($(td_ar[idx]));
-				// console.log($(td_ar[idx]).find(":checkbox").checked);
-				$(td_ar[idx]).find(":checkbox").checked;
-			}
-
-		}
-
 
 		function checkCol(num){
 			let tr_ar = $("#t1>tbody").children();
 
 			for(let i=0; i< tr_ar.length; i++){
 				let td_ar = $(tr_ar[i]).children();
-				console.log(td_ar[num]);
+				// console.log(td_ar[num]);
 				$(td_ar[num]).find(":checkbox").prop("checked", check);
 			}
 		}

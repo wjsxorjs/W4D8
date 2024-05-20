@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Ex1_Checkbox_Ans</title>
 <style>
 	table{
 		border-collapse: collapse;
@@ -137,7 +137,7 @@
 		*/
 
 		$("#t1 thead input:checkbox").click(function(){
-			// 클릭한 checkbox의 상위호환인 th태그르 얻어내어
+			// 클릭한 checkbox의 상위호환인 th태그를 얻어내어
 			// 그 th태그의 index값을 알아내자.
 
 			// let p = $(this).parent(); //th
@@ -146,11 +146,30 @@
 			let p = $(this).closest("th");
 
 
-
-			console.log(p.prop("tagName")); //클릭한 체크박스
+			// console.log(p.prop("tagName")); //클릭한 체크박스
 			// 감싸고있던 태그의 이름
+
+			// 앞서 구해낸 부모태그(th)가 해당 행(tr)에서
+			// 몇번째 요소인지 index값을 알아내자!
+
+			let idx = $("#t1 thead tr th").index(p);
+			// console.log(idx);
+
+			// 구한 index값을 가지고 tbody에 있는 각 행에서
+			// idx+1번에 있는 td안에 있는 checkbox들을 얻어낸다.
+			let cb_ar = $("#t1 tbody td:nth-child("+(idx+1)+") input:checkbox");
+
+			cb_ar.prop("checked",this.checked);
 		});
 
+		$("#t1 tbody input:checkbox").click(function(){
+
+			
+
+			let cb_ar = $("#t1 tbody td:nth-child("+(idx+1)+") input:checkbox");
+			
+
+		});
 
 			
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex2_DataList</title>
+</head>
+<body>
+    <article>
+        <header>
+            <h1>DataList 연습</h1>
+        </header>
+        <form action="" method="">
+            <fieldset>
+                <legend>datalist 연습</legend>
+                <label for="ss">포털사이트</label>
+                <input type="url" id="ss" list="s_list" name="url" required/>
+                <!-- required라는 것은 필수입력 항목임을 의미함 -->
+
+                <br/>
+                <label for="s1">Date: </label>
+                <input type="date" name="s1" id="s1" /><br/>
+
+                <label for="s1">Time: </label>
+                <input type="time" name="s2" id="s2" /><br/>
+                
+                <label for="s3">Week: </label>
+                <input type="week" name="s3" id="s3" /><br/>
+
+                <label for="s4">Email: </label>
+                <input type="email" name="s4" id="s4" /><br/>
+
+                <label for="s5">Color: </label>
+                <input type="color" name="s5" id="s5" /><br/>
+
+
+
+
+                <button type="submit">보내기</button>
+
+                <datalist id="s_list">
+                    <option value="https://www.google.com" label="Google"/>
+                    <option value="https://www.naver.com" label="Naver"/>
+                    <option value="https://www.daum.net" label="Daum(Kakao)"/>
+                </datalist>
+            </fieldset>
+        </form>
+    </article>
+</body>
+</html>

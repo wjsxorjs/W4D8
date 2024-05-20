@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex3_SetInterval</title>
+</head>
+<body onload="init()">
+    <form action="" method="get">
+        <fieldset>
+            <legend>Progress 연습</legend>
+            
+            <label for="s1">Progress: </label>
+            <progress value="0.05" max="1.0" id="s1" name="s1">
+                브라우저가 progress를 지원하지 않습니다.
+            </progress>
+            <output>5</output>%
+        </fieldset>
+    </form>
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        let inter = null; //인터벌 객체를 저장할 변수
+        // 인터벌객체란?
+        // 지정한 시간만큼 간격을 두고, 지정한 함수를 지속적으로 호출한다.
+        // setTimeout은 지정한 시간만큼 간격을 두고, 지정한 함수를 딱 한 번 호출한다.
+
+        function init(){
+            //0.5초 간격으로 pGo()라는 함수를 호출하는 인터벌객체 생성
+            inter = setInterval("pGo()",500);
+        }
+
+        function pGo(){
+            
+            let pp = document.getElementById("s1");
+            if(pp.value >= 1.0){
+                clearInterval(inter);
+                // alert("완료!");
+                return;
+            }
+
+            pp.value += 0.05;
+            // let output = document.getElementsByTagName("output")[0];
+            let output = document.querySelector("form fieldset output");
+
+            output.innerText =
+                // 0.10과 같은 값을 10으로 만들기 위해 100을 곱함
+                // 소수점이 생기는 부분을 정수화 시키기 위해 parseInt라는
+                // 내장함수를 활용했다.
+                Math.round(pp.value*100);
+                // parseInt(pp.value*100);
+        }
+    </script>
+</body>
+</html>
