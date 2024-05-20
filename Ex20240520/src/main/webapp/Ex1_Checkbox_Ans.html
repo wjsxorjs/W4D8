@@ -164,9 +164,20 @@
 
 		$("#t1 tbody input:checkbox").click(function(){
 
-			
+			let p = $(this).closest("td");
+			let idx = $("#t1 tbody tr td").index(p)%8;
+			console.log(idx);
 
-			let cb_ar = $("#t1 tbody td:nth-child("+(idx+1)+") input:checkbox");
+			let check = true;
+			$("#t1 tbody tr td:nth-child("+(idx+1)+") input:checkbox").each(function(){
+				if(!this.checked){
+					check = false;
+					return;
+				}
+			});
+			let th_cb = $("#t1 thead th:nth-child("+(idx+1)+") input:checkbox");
+			
+			th_cb.prop("checked",check);
 			
 
 		});
