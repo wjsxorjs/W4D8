@@ -123,65 +123,36 @@
 
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<script>
-		let check = false;
-
-		$(function(){
-
-			$("#r0").bind("change",function(){
-            	check = $(this).is(":checked");
-                checkCol(2);
-            });
-			$("#r1").bind("change",function(){
-            	check = $(this).is(":checked");
-                checkCol(3);
-            });
-			$("#r2").bind("change",function(){
-            	check = $(this).is(":checked");
-                checkCol(4);
-            });
-			$("#r3").bind("change",function(){
-            	check = $(this).is(":checked");
-                checkCol(5);
-            });
-			$("#r4").bind("change",function(){
-            	check = $(this).is(":checked");
-                checkCol(6);
-            });
-
-
-			$("tbody").bind("change",function(){
-                
-				indivCol();
-            });
-
+		/*
+		$("#r0").click(function(){
+			let ar = $("#t1 tbody td:nth-child(3)").find(":checkbox");
+			ar.prop("checked",this.checked);
 		});
 
-		function indivCol(){
-			let check = true;
-			let idx = 2;
+		$("#r1").click(function(){
+			let ar = $("#t1 tbody td:nth-child(4)").find(":checkbox");
+			ar.prop("checked",this.checked);
+		});
 
-			let tr_ar = $("tbody").children();
+		*/
 
-			for(let i=0; i< tr_ar.length; i++){
-				let td_ar = $(tr_ar[i]).children();
-				console.log($(td_ar[idx]));
-				// console.log($(td_ar[idx]).find(":checkbox").checked);
-				$(td_ar[idx]).find(":checkbox").checked;
-			}
+		$("#t1 thead input:checkbox").click(function(){
+			// 클릭한 checkbox의 상위호환인 th태그르 얻어내어
+			// 그 th태그의 index값을 알아내자.
 
-		}
+			// let p = $(this).parent(); //th
+			
+			//상위로 가면서 th를 검색
+			let p = $(this).closest("th");
 
 
-		function checkCol(num){
-			let tr_ar = $("#t1>tbody").children();
 
-			for(let i=0; i< tr_ar.length; i++){
-				let td_ar = $(tr_ar[i]).children();
-				console.log(td_ar[num]);
-				$(td_ar[num]).find(":checkbox").prop("checked", check);
-			}
-		}
+			console.log(p.prop("tagName")); //클릭한 체크박스
+			// 감싸고있던 태그의 이름
+		});
 
+
+			
 
 	</script>
 </body>
